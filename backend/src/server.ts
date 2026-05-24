@@ -24,7 +24,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://login-system-cq55.onrender.com",
+    origin: "https://fabulous-fox-079da9.netlify.app",
     credentials: true,
   }),
 );
