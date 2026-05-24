@@ -4,6 +4,7 @@ import cors from "cors";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import passport from "passport";
+
 import "./config/passport";
 
 import db from "./db/db";
@@ -13,27 +14,43 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.json());
-app.use(cookieParser());
-
 const PORT = process.env.PORT;
+
+app.set("trust proxy", 1);
+
+app.use(express.json());
+
+app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://fabulous-fox-079da9.netlify.app",
+    origin: "https://login-system-cq55.onrender.com",
     credentials: true,
   }),
 );
 
 app.use(
   session({
-    secret: "secret",
+    secret: process.env.SESSION_SECRET || "secret",
+
     resave: false,
+
     saveUninitialized: false,
+
+    cookie: {
+      secure: true,
+
+      sameSite: "none",
+
+      httpOnly: true,
+
+      maxAge: 1000 * 60 * 60 * 24,
+    },
   }),
 );
 
 app.use(passport.initialize());
+
 app.use(passport.session());
 
 passport.serializeUser((user: any, done: any) => {
@@ -48,5 +65,6 @@ app.use("/auth", authRoute);
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
+
   db();
 });
