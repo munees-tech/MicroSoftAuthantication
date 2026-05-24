@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-export const LoginSuccess = async (req: Request, res: Response) => {
+export const LoginSuccessController = async (req: Request, res: Response) => {
   try {
     const user = req.user as any;
     res.redirect(`http://localhost:5500/frontend/home.html`);
@@ -10,7 +10,7 @@ export const LoginSuccess = async (req: Request, res: Response) => {
   }
 };
 
-export const LoginFaild = async (req: Request, res: Response) => {
+export const LoginFaildController = async (req: Request, res: Response) => {
   try {
     res.status(200).send({
       success: false,

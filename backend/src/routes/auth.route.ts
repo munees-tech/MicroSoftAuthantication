@@ -1,9 +1,9 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import passport from "passport";
 import {
   getMeController,
-  LoginFaild,
-  LoginSuccess,
+  LoginFaildController,
+  LoginSuccessController,
   LogoutController,
 } from "../controller/user.controller";
 
@@ -21,12 +21,12 @@ router.get(
   passport.authenticate("microsoft", {
     failureRedirect: "/auth/faild",
   }),
-  LoginSuccess,
+  LoginSuccessController,
 );
 
 router.get("/me", getMeController);
 
-router.get("/faild", LoginFaild);
+router.get("/faild", LoginFaildController);
 
 router.get("/logout", LogoutController);
 
