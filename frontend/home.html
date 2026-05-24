@@ -76,6 +76,19 @@
       }
 
       getUser();
+
+      async function LogoutFun() {
+        try {
+          const response = await fetch("https://login-system-cq55.onrender.com/auth/logout", {
+            credentials: "include",
+          });
+          if (response.ok) {
+            window.location.href = "https://fabulous-fox-079da9.netlify.app/index.html";
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
     </script>
   </body>
 </html>
