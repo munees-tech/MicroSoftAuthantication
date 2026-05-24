@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 export const LoginSuccessController = async (req: Request, res: Response) => {
   try {
     const user = req.user as any;
-    res.redirect(`http://localhost:5500/frontend/home.html`);
+    res.redirect(`https://fabulous-fox-079da9.netlify.app/frontend/home.html`);
   } catch (error) {
     res.status(500).send(`MicroSoft Login Success ${error}`);
     console.log(`Error in LoginSuccess ${error}`);

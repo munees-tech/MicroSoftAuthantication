@@ -20,7 +20,7 @@ const PORT = process.env.PORT;
 
 app.use(
   cors({
-    origin: "http://localhost:5500",
+    origin: "https://fabulous-fox-079da9.netlify.app",
     credentials: true,
   }),
 );
