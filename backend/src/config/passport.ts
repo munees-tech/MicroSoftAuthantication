@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: process.env.MICROSOFT_CLIENT_ID!,
       clientSecret: process.env.MICROSOFT_CLIENT_SECREATE!,
-      callbackURL: "https://login-system-cq55.onrender.com/auth/microsoft/callback",
+      callbackURL: process.env.CALLBACK_URL,
       scope: ["user.read"],
     },
     async (accessToken: any, refreshToken: any, profile: any, done: any) => {
